@@ -1,80 +1,73 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class App {
-    public static void main(String[] args) throws Exception {
-        runLinkedList();
+
+    public static void main(String[] args) {
+
+        runLinkList();
         runQueue();
         runStack();
 
-        Ejercicio1 ejercicio1=new Ejercicio1();
-        String texto="COMPUTACION";
-        System.out.println("Texto normal: "+texto);
-        String invertido=ejercicio1.invertString(texto);
-        System.out.println("Texto invertido: "+invertido);
+        // Ejercicio 1
+        Ejercicio1 ej1 = new Ejercicio1();
+        System.out.println("\nInvertir texto:");
+        System.out.println(ej1.invertString("COMPUTACION"));
+
+        // Ejercicio 2
+        Ejercicio2 ej2 = new Ejercicio2();
+        System.out.println("\nPalíndromos:");
+        System.out.println(ej2.esPalindromo("radar"));
+        System.out.println(ej2.esPalindromo("computacion"));
     }
 
-    private static void runStack() {
-        Stack<String> pila = new Stack<>();
-        pila.push("A");
-        pila.push("B");
-        pila.push("C");
-        pila.pop();
+    // LinkedList
+    private static void runLinkList() {
+        System.out.println("=== LinkedList ===");
 
-        String elemento = pila.pop();
-        System.out.println(pila.size());
-        System.out.println(elemento);
+        LinkedList<String> lista = new LinkedList<>();
 
-        Deque<String> pila2= new ArrayDeque<>();
-        Deque<String> pila3= new LinkedList<>();
-        pila2.push("a");
-        pila3.push("A");
-        pila.pop();
-        
+        lista.add("Uno");
+        lista.add("Dos");
+        lista.add("Tres");
+
+        System.out.println("Lista: " + lista);
+
+        lista.remove("Dos");
+
+        System.out.println("Después de eliminar: " + lista);
     }
 
+    // Queue
     private static void runQueue() {
-        Queue<String> cola = new ArrayDeque<String>();
-        cola.offer("Jose");
-        cola.offer("Andres");
-        cola.offer("Ana");
+        System.out.println("\n=== Queue ===");
 
-        System.out.println(cola.isEmpty());
-        System.out.println(cola.size());
+        Queue<String> cola = new LinkedList<>();
 
-        System.out.println(cola.peek());
-        System.out.println(cola.size());
-        System.out.println(cola.poll());
-        System.out.println(cola.size());
+        cola.add("A");
+        cola.add("B");
+        cola.add("C");
 
-        while(!cola.isEmpty()){
-            String cliente=cola.poll();
-            System.out.println("Atendi a: "+cliente);
-        }
+        System.out.println("Cola: " + cola);
+
+        cola.poll();
+
+        System.out.println("Después de atender: " + cola);
     }
 
-    private static void runLinkedList() {
-        System.out.println("Lista enlazada / LinkedList");
-        LinkedList<String> nombres = new LinkedList<>();
-        System.out.println("Esta vacía? "+ nombres.isEmpty());
-        System.out.println("Tamaño: "+ nombres.size());
+    // Stack usando ArrayDeque
+    private static void runStack() {
+        System.out.println("\n=== Stack (ArrayDeque) ===");
 
-        nombres.add("Juan");
-        nombres.add("Pedro");
-        nombres.add("Maria");
-        nombres.add("Diego");
+        ArrayDeque<String> pila = new ArrayDeque<>();
 
-        System.out.println(nombres.getFirst());
-        System.out.println(nombres.get(2));
-        System.out.println(nombres.getLast());
+        pila.push("X");
+        pila.push("Y");
+        pila.push("Z");
 
-        System.out.println(nombres.peek());
-        System.out.println(nombres.size());
-        System.out.println(nombres.pop());
-        System.out.println(nombres.size());
+        System.out.println("Pila: " + pila);
 
+        pila.pop();
+
+        System.out.println("Después de sacar: " + pila);
     }
 }
